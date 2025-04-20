@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VOLX</title>
+  <style>
+    /* RESET BÁSICO */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* VARIÁVEIS DE CONTROLE */
+    :root {
+      --cor-fundo: #000;
+      --cor-texto: #fff;
+      --cor-borda: #fff;
+      --fonte-base: 'Segoe UI', sans-serif;
+
+      /* controle da logo */
+      --logo-size: 480px;
+      --logo-margin-top: 100px;
+      --logo-margin-bottom: 100px;
+
+      /* largura preferida dos botões (percentual), mas limitados entre min e max */
+      --btn-width: 100%;         /* preferencialmente metade da largura do card */
+      --btn-min-width: 150px;   /* nunca menor que isso */
+      --btn-max-width: 500px;   /* nem maior que isso */
+
+      /* altura fixa dos botões */
+      --btn-height: 48px;
+    }
+
+    body {
+      font-family: var(--fonte-base);
+      background-color: var(--cor-fundo);
+      color: var(--cor-texto);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* HEADER / LOGO */
+    .site-header {
+      text-align: center;
+    }
+    .logo {
+      display: block;
+      width: var(--logo-size);
+      height: auto;
+      margin: var(--logo-margin-top) auto var(--logo-margin-bottom);
+    }
+
+    /* HERO: Imagens lado a lado */
+    .hero {
+      flex: 1;
+      display: flex;
+      width: 100%;
+      height: calc(
+        100vh 
+        - (var(--logo-margin-top) + var(--logo-margin-bottom) + 40px)
+      );
+      /* 40px = padding implícito de header/footer */
+    }
+    .card {
+      position: relative;
+      flex: 1;
+      overflow: hidden;
+    }
+    .card img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* BOTÕES SOBRE IMAGEM – LARGURA FLEXÍVEL, ALTURA FIXA */
+    .btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      /* largura adaptativa entre min e max, preferindo --btn-width */
+      width: clamp(
+        var(--btn-min-width),
+        var(--btn-width),
+        var(--btn-max-width)
+      );
+      height: var(--btn-height);
+      line-height: var(--btn-height);
+      text-align: center;
+
+      border: 2px solid var(--cor-borda);
+      color: var(--cor-texto);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .btn:hover {
+      background-color: var(--cor-borda);
+      color: var(--cor-fundo);
+    }
+
+    /* FOOTER */
+    .site-footer {
+      text-align: center;
+      padding: 10px 0;
+      font-size: 0.85rem;
+      background-color: var(--cor-fundo);
+    }
+
+    /* RESPONSIVO: empilha em telas pequenas */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+      }
+      .card {
+        height: 50vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER / LOGO -->
+  <header class="site-header">
+    <img src="assets/images/logo.png" alt="Logo VOLX" class="logo" />
+  </header>
+
+  <!-- SEÇÃO PRINCIPAL -->
+  <main class="hero">
+    <!-- CARD 1 -->
+    <div class="card">
+      <img src="assets/images/camisetas.png" alt="Comprar Camisetas" />
+      <a
+        href="https://brunoaudiovisual.wixsite.com/volx"
+        class="btn"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Comprar Camisetas
+      </a>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card">
+      <img src="assets/images/facebook.png" alt="Facebook" />
+      <a
+        href="https://www.facebook.com/profile.php?id=61556142962912"
+        class="btn"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Facebook
+      </a>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    © <span id="year"></span> VOLX
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
