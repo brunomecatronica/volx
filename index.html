@@ -25,9 +25,9 @@
       --logo-margin-bottom: 100px;
 
       /* largura preferida dos botões (percentual), mas limitados entre min e max */
-      --btn-width: 100%;         /* preferencialmente metade da largura do card */
-      --btn-min-width: 150px;   /* nunca menor que isso */
-      --btn-max-width: 500px;   /* nem maior que isso */
+      --btn-width: 100%;
+      --btn-min-width: 150px;
+      --btn-max-width: 500px;
 
       /* altura fixa dos botões */
       --btn-height: 48px;
@@ -46,6 +46,7 @@
     .site-header {
       text-align: center;
     }
+
     .logo {
       display: block;
       width: var(--logo-size);
@@ -58,17 +59,15 @@
       flex: 1;
       display: flex;
       width: 100%;
-      height: calc(
-        100vh 
-        - (var(--logo-margin-top) + var(--logo-margin-bottom) + 40px)
-      );
-      /* 40px = padding implícito de header/footer */
+      height: calc(100vh - (var(--logo-margin-top) + var(--logo-margin-bottom) + 40px));
     }
+
     .card {
       position: relative;
       flex: 1;
       overflow: hidden;
     }
+
     .card img {
       display: block;
       width: 100%;
@@ -76,29 +75,23 @@
       object-fit: cover;
     }
 
-    /* BOTÕES SOBRE IMAGEM – LARGURA FLEXÍVEL, ALTURA FIXA */
+    /* BOTÕES SOBRE IMAGEM */
     .btn {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-
-      /* largura adaptativa entre min e max, preferindo --btn-width */
-      width: clamp(
-        var(--btn-min-width),
-        var(--btn-width),
-        var(--btn-max-width)
-      );
+      width: clamp(var(--btn-min-width), var(--btn-width), var(--btn-max-width));
       height: var(--btn-height);
       line-height: var(--btn-height);
       text-align: center;
-
       border: 2px solid var(--cor-borda);
       color: var(--cor-texto);
       text-decoration: none;
       font-size: 1rem;
       transition: background-color 0.3s, color 0.3s;
     }
+
     .btn:hover {
       background-color: var(--cor-borda);
       color: var(--cor-fundo);
@@ -117,8 +110,39 @@
       .hero {
         flex-direction: column;
       }
+
       .card {
-        height: 50vh;
+        height: auto;
+        min-height: 50vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .card img {
+        height: auto;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .btn {
+        position: static;
+        transform: none;
+        margin-top: 12px;
+        width: 90vw;
+        max-width: var(--btn-max-width);
+      }
+
+      .logo {
+        width: 90vw;
+        max-width: var(--logo-size);
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .site-header {
+        padding: 0 16px;
       }
     }
   </style>
