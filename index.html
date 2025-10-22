@@ -33,7 +33,7 @@
       --btn-max-width: 500px;
 
       /* altura fixa dos botões */
-      --btn-height: 56px;
+      --btn-height: 72px;
     }
 
     body {
@@ -55,6 +55,8 @@
       width: var(--logo-size);
       height: auto;
       margin: var(--logo-margin-top) auto var(--logo-margin-bottom);
+      border: none;
+      outline: none;
     }
 
     /* HERO: Imagens lado a lado */
@@ -112,7 +114,7 @@
     /* RESPONSIVO: aumenta texto dos botões em desktop */
     @media (min-width: 769px) {
       .btn {
-        font-size: 1.75rem;
+        font-size: 2.25rem;
       }
     }
 
@@ -143,6 +145,7 @@
         margin-top: 12px;
         width: 90vw;
         max-width: var(--btn-max-width);
+        font-size: 1.25rem;
       }
 
       .logo {
@@ -150,6 +153,8 @@
         max-width: var(--logo-size);
         margin-left: auto;
         margin-right: auto;
+        border: none;
+        outline: none;
       }
 
       .site-header {
