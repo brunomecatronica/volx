@@ -33,7 +33,7 @@
       --btn-max-width: 500px;
 
       /* altura fixa dos botões */
-      --btn-height: 48px;
+      --btn-height: 56px;
     }
 
     body {
@@ -86,8 +86,9 @@
       transform: translate(-50%, -50%);
       width: clamp(var(--btn-min-width), var(--btn-width), var(--btn-max-width));
       height: var(--btn-height);
-      line-height: var(--btn-height);
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border: 2px solid var(--cor-borda);
       color: var(--cor-texto);
       text-decoration: none;
@@ -96,8 +97,8 @@
     }
 
     .btn:hover {
-      background-color: var(--cor-borda);
-      color: var(--cor-fundo);
+      background-color: var(--cor-fundo);
+      color: var(--cor-texto);
     }
 
     /* FOOTER */
@@ -111,7 +112,7 @@
     /* RESPONSIVO: aumenta texto dos botões em desktop */
     @media (min-width: 769px) {
       .btn {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
       }
     }
 
